@@ -5,7 +5,6 @@ import {
   Mail, 
   Phone, 
   ChevronDown, 
-  ExternalLink, 
   Code, 
   Database, 
   Terminal, 
@@ -14,7 +13,11 @@ import {
   Briefcase, 
   User, 
   Menu, 
-  X 
+  X,
+  FileText,
+  CheckCircle2,
+  HelpCircle,
+  Lightbulb
 } from 'lucide-react';
 
 const Portfolio = () => {
@@ -28,7 +31,7 @@ const Portfolio = () => {
       setScrolled(window.scrollY > 50);
       
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'experience', 'projects', 'skills', 'contact'];
+      const sections = ['home', 'about', 'experience', 'interviews', 'projects', 'skills', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -56,6 +59,7 @@ const Portfolio = () => {
     { name: 'Home', id: 'home' },
     { name: 'About', id: 'about' },
     { name: 'Experience', id: 'experience' },
+    { name: 'Interviews', id: 'interviews' },
     { name: 'Projects', id: 'projects' },
     { name: 'Skills', id: 'skills' },
     { name: 'Contact', id: 'contact' },
@@ -99,6 +103,91 @@ const Portfolio = () => {
     tools: ["Git", "GitHub", "Postman", "VS Code", "Linux"]
   };
 
+  const interviewData = {
+    company: "Edgeverve Infosys",
+    role: "System Engineer / Trainee",
+    rounds: [
+      {
+        title: "Round 1: Online Assessment (OA)",
+        type: "Coding Challenge",
+        difficulty: "Medium",
+        content: [
+          "Duration: 3 Hours",
+          "Total Questions: 3 Coding Problems",
+          "Q1: Special Prime",
+          "Q2: Magic Button",
+          "Q3: (Logic/Dynamic Programming)"
+        ],
+        tips: "You have ample time (3 hours), so focus on optimizing your solution and handling edge cases."
+      },
+      {
+        title: "Round 2: Technical Interview",
+        type: "Live Coding & Discussion",
+        difficulty: "Medium",
+        intro: "A comprehensive round covering Projects, Theory, and Live Coding.",
+        sections: [
+          {
+            name: "HR & General (Warm-up)",
+            items: [
+              "Introduce yourself (Asked to everyone).",
+              "Which is your strongest programming language?",
+              "How did you get interested in Software Engineering?",
+              "Why did you choose this tech stack for your project?"
+            ]
+          },
+          {
+            name: "Project Discussion (Deep Dive)",
+            items: [
+              "Explain project architecture & APIs used.",
+              "What was your specific contribution?",
+              "How can you convert this into an AI-based solution?",
+              "Database connectivity (JDBC) & Schema details."
+            ]
+          },
+          {
+            name: "Technical Theory",
+            items: [
+              "OOP: Real-world examples, Abstract vs Interface, Wrapper classes.",
+              "OS: Ubuntu vs Windows, Shell commands (mkdir), Dynamic Memory.",
+              "DB: SQL vs MongoDB, Joins, DDL vs DML, Views.",
+              "SE: Agile vs Waterfall, First step of SDLC.",
+              "Lang: Diff between Python/Java/C++, Pointers in C."
+            ]
+          },
+          {
+            name: "Live Coding: Arrays & Strings",
+            items: [
+              "Count perfect squares in an array.",
+              "Rotate array by one / last position.",
+              "Merge two sorted arrays.",
+              "Find peak element / Local maxima & minima.",
+              "Remove duplicates from string.",
+              "Longest sequence of consecutive 1s.",
+              "Next palindromic number."
+            ]
+          },
+          {
+            name: "Live Coding: Math & Logic",
+            items: [
+              "Triangular sum / Triangular number.",
+              "Sum of prime factors.",
+              "Product of range of Fibonacci series.",
+              "Sum of numbers in range [1, N] not divisible by X or Y.",
+              "Output Qs: Inheritance & Exception Handling."
+            ]
+          }
+        ]
+      }
+    ],
+    preparation: [
+      "Prepare your project thoroughly: Know architecture, APIs, DB, and future scope.",
+      "Revise OOP + SQL basics: These were asked to EVERY student.",
+      "Practice simple DSA: Focus on Arrays, Strings, and Math problems.",
+      "Practice speaking your logic: Live coding checks communication too.",
+      "Build a clean resume: Don't add anything you can't explain."
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-slate-900 text-slate-200 font-sans selection:bg-teal-500 selection:text-white">
       {/* Navigation */}
@@ -132,7 +221,7 @@ const Portfolio = () => {
 
         {/* Mobile Nav Dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden bg-slate-800 border-b border-slate-700 absolute w-full">
+          <div className="md:hidden bg-slate-800 border-b border-slate-700 absolute w-full shadow-xl">
             <div className="flex flex-col px-6 py-4 gap-4">
               {navLinks.map((link) => (
                 <button
@@ -205,10 +294,10 @@ const Portfolio = () => {
                 Contact Me
               </button>
               <button 
-                onClick={() => scrollToSection('projects')}
+                onClick={() => scrollToSection('interviews')}
                 className="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-lg border border-slate-700 transition-all"
               >
-                View Work
+                Interview Exp.
               </button>
             </div>
           </div>
@@ -353,6 +442,128 @@ const Portfolio = () => {
         </div>
       </section>
 
+      {/* Interview Experience Section */}
+      <section id="interviews" className="py-20 bg-slate-800/30">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Interview Experience</h2>
+            <div className="w-20 h-1 bg-teal-500 mx-auto rounded-full"></div>
+            <p className="text-slate-400 mt-4">My journey and insights to help future students.</p>
+          </div>
+
+          <div className="max-w-5xl mx-auto space-y-8">
+            <div className="flex flex-col md:flex-row gap-6 items-start">
+              {/* Company Badge */}
+              <div className="bg-slate-800 p-6 rounded-xl border border-slate-700 w-full md:w-1/3 shadow-lg">
+                <div className="w-16 h-16 bg-blue-600/20 rounded-lg flex items-center justify-center mb-4 text-blue-400">
+                  <Briefcase size={32} />
+                </div>
+                <h3 className="text-2xl font-bold text-white">{interviewData.company}</h3>
+                <p className="text-teal-400 font-medium mb-4">{interviewData.role}</p>
+                <div className="space-y-2 text-sm text-slate-400">
+                  <div className="flex justify-between border-b border-slate-700 pb-2">
+                    <span>Rounds</span>
+                    <span className="text-white">2 Rounds</span>
+                  </div>
+                  <div className="flex justify-between border-b border-slate-700 pb-2">
+                    <span>Round 1</span>
+                    <span className="text-white">Online Assessment</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Round 2</span>
+                    <span className="text-white">Technical + Code</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Rounds Details */}
+              <div className="w-full md:w-2/3 space-y-6">
+                
+                {/* Round 1 Card */}
+                <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden hover:border-teal-500/50 transition-all">
+                  <div className="p-6 border-b border-slate-800 bg-slate-800/50 flex justify-between items-center">
+                    <h4 className="text-lg font-bold text-white flex items-center gap-2">
+                      <FileText className="text-teal-400" size={20} />
+                      {interviewData.rounds[0].title}
+                    </h4>
+                    <span className="px-3 py-1 bg-teal-500/10 text-teal-400 text-xs rounded-full">
+                      {interviewData.rounds[0].difficulty}
+                    </span>
+                  </div>
+                  <div className="p-6">
+                    <ul className="space-y-3 mb-4">
+                      {interviewData.rounds[0].content.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-3 text-slate-300">
+                          <CheckCircle2 className="text-teal-500 mt-1 shrink-0" size={16} />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="bg-slate-800/50 p-4 rounded-lg flex gap-3 items-start">
+                      <HelpCircle className="text-yellow-500 shrink-0 mt-1" size={18} />
+                      <p className="text-sm text-slate-400 italic">
+                        <strong className="text-slate-200 not-italic">Pro Tip: </strong> 
+                        {interviewData.rounds[0].tips}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Round 2 Card */}
+                <div className="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden hover:border-teal-500/50 transition-all">
+                  <div className="p-6 border-b border-slate-800 bg-slate-800/50 flex justify-between items-center">
+                    <h4 className="text-lg font-bold text-white flex items-center gap-2">
+                      <Code className="text-blue-400" size={20} />
+                      {interviewData.rounds[1].title}
+                    </h4>
+                    <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">
+                      {interviewData.rounds[1].difficulty}
+                    </span>
+                  </div>
+                  
+                  <div className="divide-y divide-slate-800">
+                    {interviewData.rounds[1].sections.map((section, sIdx) => (
+                      <div key={sIdx} className="p-6">
+                        <h5 className="font-semibold text-white mb-4 flex items-center gap-2">
+                          <div className={`w-2 h-2 rounded-full ${sIdx === 0 ? 'bg-purple-500' : sIdx === 1 ? 'bg-teal-500' : sIdx === 2 ? 'bg-blue-500' : sIdx === 3 ? 'bg-orange-500' : 'bg-red-500'}`}></div>
+                          {section.name}
+                        </h5>
+                        <div className="grid md:grid-cols-2 gap-3">
+                          {section.items.map((q, qIdx) => (
+                            <div key={qIdx} className="bg-slate-800 p-3 rounded border border-slate-700 text-sm text-slate-300 hover:text-white transition-colors">
+                              {q}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Preparation Guide Card */}
+                 <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl border border-teal-500/30 overflow-hidden">
+                  <div className="p-6 border-b border-slate-800/50 flex items-center gap-2">
+                    <Lightbulb className="text-yellow-400" size={20} />
+                    <h4 className="text-lg font-bold text-white">How to Prepare for Next Year</h4>
+                  </div>
+                  <div className="p-6">
+                    <ul className="space-y-3">
+                      {interviewData.preparation.map((tip, idx) => (
+                        <li key={idx} className="flex items-start gap-3 text-slate-300 text-sm">
+                          <div className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 shrink-0"></div>
+                          <span>{tip}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-slate-800/50">
         <div className="max-w-7xl mx-auto px-6">
@@ -431,10 +642,6 @@ const Portfolio = () => {
             <a href="mailto:sohamg.3456@gmail.com" className="flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors border border-slate-700 group">
               <Mail className="w-8 h-8 text-teal-500 mb-4 group-hover:scale-110 transition-transform" />
               <span className="text-slate-300">sohamg.3456@gmail.com</span>
-            </a>
-            <a href="tel:+918669566040" className="flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors border border-slate-700 group">
-              <Phone className="w-8 h-8 text-blue-500 mb-4 group-hover:scale-110 transition-transform" />
-              <span className="text-slate-300">+91 8669566040</span>
             </a>
             <a href="https://www.linkedin.com/in/soham-gadekar/" target="_blank" rel="noreferrer" className="flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors border border-slate-700 group">
               <Linkedin className="w-8 h-8 text-indigo-500 mb-4 group-hover:scale-110 transition-transform" />

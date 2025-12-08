@@ -1,16 +1,16 @@
 {
-  "homepage":"https://soham-gadekar.github.io/soham-portfolio",
+  "homepage": "https://soham-gadekar.github.io/Soham-Portfolio/",
   "name": "my-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "lucide-react": "^0.554.0",
