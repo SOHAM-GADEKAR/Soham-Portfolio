@@ -643,6 +643,7 @@ const Portfolio = () => {
               <Mail className="w-8 h-8 text-teal-500 mb-4 group-hover:scale-110 transition-transform" />
               <span className="text-slate-300">sohamg.3456@gmail.com</span>
             </a>
+            
             <a href="https://www.linkedin.com/in/soham-gadekar/" target="_blank" rel="noreferrer" className="flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors border border-slate-700 group">
               <Linkedin className="w-8 h-8 text-indigo-500 mb-4 group-hover:scale-110 transition-transform" />
               <span className="text-slate-300">LinkedIn Profile</span>
